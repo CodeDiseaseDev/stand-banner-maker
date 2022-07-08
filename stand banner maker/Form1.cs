@@ -338,6 +338,8 @@ namespace stand_banner_maker
 
         private void Form1_Activated(object sender, EventArgs e)
         {
+            return;
+
             if (ModularWindowsVisible)
                 return;
 
