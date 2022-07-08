@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Blink_UI_lib;
+using stand_banner_maker.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.Linq;
@@ -13,7 +16,7 @@ using System.Windows.Forms;
 
 namespace stand_banner_maker
 {
-    public partial class Form1 : Form
+    public partial class Form1 : BlinkForm
     {
         public Form1()
         {
@@ -27,13 +30,15 @@ namespace stand_banner_maker
 
             InitializeComponent();
 
+            //EnableBlur();
+
             //SpiralAnimation();
         }
 
 
         
 
-        public Color backgroundColor = Color.Magenta;
+        public Color backgroundColor = Color.FromArgb(200, 200, 200);
         public Image background;
         public Bitmap resultImage;
 
@@ -94,16 +99,19 @@ namespace stand_banner_maker
             using (Graphics g = Graphics.FromImage(bmp))
             {
                 g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                g.TextRenderingHint = textSettings.checkBox2.Checked ? TextRenderingHint.ClearTypeGridFit : TextRenderingHint.AntiAlias;
+                g.TextRenderingHint = TextRenderingHint.AntiAlias;
+
+                int offset = textSettings.verticalOffset.Value;
 
                 Point textLoc = new Point(
                     (size.Width / 2) - (textSize.Width / 2),
                     (size.Height / 2) - (textSize.Height / 2)
                 );
 
+                textLoc.Offset(0, offset);
+
                 g.DrawString(text, font, new SolidBrush(color), textLoc);
             }
-
 
             if (blur > 0)
             {
@@ -135,6 +143,34 @@ namespace stand_banner_maker
             }
         }
 
+        public GraphicsPath RoundedRect(Rectangle bounds, int radius)
+        {
+            int diameter = radius * 2;
+            Size size = new Size(diameter, diameter);
+            Rectangle arc = new Rectangle(bounds.Location, size);
+            GraphicsPath path = new GraphicsPath();
+
+            if (radius == 0)
+            {
+                path.AddRectangle(bounds);
+                return path;
+            }
+
+            path.AddArc(arc, 180, 90);
+
+            arc.X = bounds.Right - diameter;
+            path.AddArc(arc, 270, 90);
+
+            arc.Y = bounds.Bottom - diameter;
+            path.AddArc(arc, 0, 90);
+
+            arc.X = bounds.Left;
+            path.AddArc(arc, 90, 90);
+
+            path.CloseFigure();
+            return path;
+        }
+
         void Debug(Graphics graphics, Point textLoc, Size size)
         {
             if (dbgmode.Checked)
@@ -154,13 +190,21 @@ namespace stand_banner_maker
 
         void Background(Graphics graphics)
         {
-            graphics.Clear(backgroundColor);
+            graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-            if (background != null && backgroundSettings.checkBox1.Checked)
+            Color color = backgroundSettings.blinkCheckbox1.Checked ? backgroundColor : Color.Transparent;
+            int cornerRadius = backgroundSettings.cornerRadius.Value;
+            Rectangle rect = new Rectangle(0, 0, pictureBox1.Width - 1, pictureBox1.Height - 1);
+            var path = RoundedRect(rect, cornerRadius);
+
+            graphics.FillPath(new SolidBrush(color), path);
+            graphics.DrawPath(new Pen(color), path); // draw a border around for better anti-aliasing
+
+            if (background != null && backgroundSettings.backgroundImageEnabled.Checked)
             {
                 Bitmap bmp = (Bitmap)background.Clone();
 
-                if (backgroundSettings.checkBox2.Checked)
+                if (backgroundSettings.gaussianBlur.Checked)
                 {
                     var gb = new GaussianBlur(bmp);
                     bmp = gb.Process(5);
@@ -188,6 +232,8 @@ namespace stand_banner_maker
             );
 
             Shadow(graphics, text, font);
+
+            //int offset = textSettings.verticalOffset.Value;
             graphics.DrawImage(txt, 0, 0);
 
             Debug(graphics, textLoc, size.ToSize());
@@ -202,6 +248,8 @@ namespace stand_banner_maker
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
+            e.Graphics.Clear(BackColor);
+            //e.Graphics.DrawImage(Resources.transparent, 0, 0);
             resultImage = new Bitmap(pictureBox1.Width, pictureBox1.Height);
 
             using (Graphics graphics = Graphics.FromImage(resultImage))
@@ -235,33 +283,17 @@ namespace stand_banner_maker
 
         private void niceFontButton1_Click(object sender, EventArgs e)
         {
-            SaveFileDialog dialog = new SaveFileDialog();
-            dialog.Filter = "PNG image|*.png";
-
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                resultImage.Save(dialog.FileName, ImageFormat.Png);
-            }
+            
         }
 
         private void dbgmode_CheckedChanged(object sender, EventArgs e)
         {
-            pictureBox1.Invalidate();
+            
         }
 
         private void niceFontButton2_Click(object sender, EventArgs e)
         {
-            if (!shadowSettings.Visible)
-            {
-                shadowSettings.Show();
-                shadowSettings.BringToFront();
-                shadowSettings.Top = textSettings.Bottom;
-                shadowSettings.Left = Right;
-            }
-            else
-            {
-                shadowSettings.Hide();
-            }
+            
         }
 
         private void Form1_Resize(object sender, EventArgs e)
@@ -289,17 +321,7 @@ namespace stand_banner_maker
 
         private void niceFontButton3_Click(object sender, EventArgs e)
         {
-            if (!textSettings.Visible)
-            {
-                textSettings.Show();
-                textSettings.BringToFront();
-                textSettings.Left = Right;
-                textSettings.Top = Top;
-            }
-            else
-            {
-                textSettings.Hide();
-            }
+            
         }
 
         private void Form1_Move(object sender, EventArgs e)
@@ -316,17 +338,7 @@ namespace stand_banner_maker
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!backgroundSettings.Visible)
-            {
-                backgroundSettings.Show();
-                backgroundSettings.BringToFront();
-                backgroundSettings.Left = Left - backgroundSettings.Width;
-                backgroundSettings.Top = Top;
-            }
-            else
-            {
-                backgroundSettings.Hide();
-            }
+            
         }
 
         private void Form1_Enter(object sender, EventArgs e)
@@ -353,6 +365,72 @@ namespace stand_banner_maker
         private void Form1_Deactivate(object sender, EventArgs e)
         {
             
+        }
+
+        private void blinkButton1_Click(object sender, EventArgs e)
+        {
+            if (!textSettings.Visible)
+            {
+                textSettings.Show();
+                textSettings.BringToFront();
+                textSettings.Left = Right;
+                textSettings.Top = Top;
+            }
+            else
+            {
+                textSettings.Hide();
+            }
+        }
+
+        private void blinkButton2_Click(object sender, EventArgs e)
+        {
+            if (!shadowSettings.Visible)
+            {
+                shadowSettings.Show();
+                shadowSettings.BringToFront();
+                shadowSettings.Top = textSettings.Bottom;
+                shadowSettings.Left = Right;
+            }
+            else
+            {
+                shadowSettings.Hide();
+            }
+        }
+
+        private void blinkButton3_Click(object sender, EventArgs e)
+        {
+            if (!backgroundSettings.Visible)
+            {
+                backgroundSettings.Show();
+                backgroundSettings.BringToFront();
+                backgroundSettings.Left = Left - backgroundSettings.Width;
+                backgroundSettings.Top = Top;
+            }
+            else
+            {
+                backgroundSettings.Hide();
+            }
+        }
+
+        private void blinkButton4_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "PNG image|*.png";
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                resultImage.Save(dialog.FileName, ImageFormat.Png);
+            }
+        }
+
+        private void blinkCheckbox1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void blinkCheckbox1_Click(object sender, MouseEventArgs e)
+        {
+            pictureBox1.Invalidate();
         }
     }
 }

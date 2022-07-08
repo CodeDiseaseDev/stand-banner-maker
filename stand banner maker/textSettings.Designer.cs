@@ -29,32 +29,34 @@ namespace stand_banner_maker
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
-            this.button1 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.label4 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.blinkLabel1 = new Blink_UI_lib.BlinkLabel();
+            this.blinkButton1 = new Blink_UI_lib.BlinkButton();
+            this.verticalOffset = new Blink_UI_lib.BlinkSlider();
+            this.blinkGroupBox1 = new Blink_UI_lib.BlinkGroupBox();
+            this.blinkButton2 = new Blink_UI_lib.BlinkButton();
+            this.blinkLabel2 = new Blink_UI_lib.BlinkLabel();
+            this.blinkLabel3 = new Blink_UI_lib.BlinkLabel();
+            this.blinkLabel4 = new Blink_UI_lib.BlinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.blinkGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label2
+            // blinkTitleBar1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 13);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Text";
+            this.blinkTitleBar1.Size = new System.Drawing.Size(393, 29);
             // 
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(49, 12);
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(40)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.ForeColor = System.Drawing.Color.White;
+            this.textBox1.Location = new System.Drawing.Point(49, 52);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(332, 20);
             this.textBox1.TabIndex = 10;
@@ -65,25 +67,13 @@ namespace stand_banner_maker
             // 
             this.fontDialog1.Font = new System.Drawing.Font("Calibri", 50F);
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.button1.Location = new System.Drawing.Point(12, 66);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Change font";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.BackColor = System.Drawing.Color.White;
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Location = new System.Drawing.Point(49, 38);
+            this.pictureBox2.Location = new System.Drawing.Point(49, 78);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(332, 20);
             this.pictureBox2.TabIndex = 13;
@@ -91,54 +81,151 @@ namespace stand_banner_maker
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             this.pictureBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox2_Paint);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 40);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 13);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Color";
-            // 
             // colorDialog1
             // 
             this.colorDialog1.Color = System.Drawing.Color.White;
             // 
-            // label4
+            // blinkLabel1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(102, 70);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 13);
-            this.label4.TabIndex = 15;
-            this.label4.SizeChanged += new System.EventHandler(this.label4_SizeChanged);
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.blinkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.blinkLabel1.AutoSize = true;
+            this.blinkLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.blinkLabel1.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
+            this.blinkLabel1.ForeColor = System.Drawing.Color.White;
+            this.blinkLabel1.Location = new System.Drawing.Point(310, 11);
+            this.blinkLabel1.Name = "blinkLabel1";
+            this.blinkLabel1.Size = new System.Drawing.Size(47, 17);
+            this.blinkLabel1.TabIndex = 18;
+            this.blinkLabel1.Text = "Y Offset";
             // 
-            // checkBox2
+            // blinkButton1
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.checkBox2.Location = new System.Drawing.Point(108, 69);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(95, 17);
-            this.checkBox2.TabIndex = 16;
-            this.checkBox2.Text = "ClearType Text";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.blinkButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.blinkButton1.Animated = true;
+            this.blinkButton1.BackColor = System.Drawing.Color.Transparent;
+            this.blinkButton1.BorderRadius = 4;
+            this.blinkButton1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(40)))));
+            this.blinkButton1.Font = new System.Drawing.Font("Yu Gothic UI", 7F);
+            this.blinkButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.blinkButton1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
+            this.blinkButton1.Location = new System.Drawing.Point(11, 186);
+            this.blinkButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.blinkButton1.Name = "blinkButton1";
+            this.blinkButton1.Size = new System.Drawing.Size(84, 23);
+            this.blinkButton1.TabIndex = 20;
+            this.blinkButton1.Text = "Change Font";
+            this.blinkButton1.Click += new System.EventHandler(this.blinkButton1_Click);
+            // 
+            // verticalOffset
+            // 
+            this.verticalOffset.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.verticalOffset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(30)))));
+            this.verticalOffset.DotColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.verticalOffset.Location = new System.Drawing.Point(12, 23);
+            this.verticalOffset.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.verticalOffset.MaxValue = 100;
+            this.verticalOffset.MinValue = -100;
+            this.verticalOffset.Name = "verticalOffset";
+            this.verticalOffset.Size = new System.Drawing.Size(290, 15);
+            this.verticalOffset.TabIndex = 21;
+            this.verticalOffset.TrackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(60)))));
+            this.verticalOffset.Value = 0;
+            this.verticalOffset.OnValueChanged += new Blink_UI_lib.BlinkSlider.ValueChangedEventHandler(this.blinkSlider1_OnValueChanged);
+            // 
+            // blinkGroupBox1
+            // 
+            this.blinkGroupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.blinkGroupBox1.BorderRadius = 0;
+            this.blinkGroupBox1.Controls.Add(this.blinkButton2);
+            this.blinkGroupBox1.Controls.Add(this.verticalOffset);
+            this.blinkGroupBox1.Controls.Add(this.blinkLabel1);
+            this.blinkGroupBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(30)))));
+            this.blinkGroupBox1.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
+            this.blinkGroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            // 
+            // 
+            // 
+            this.blinkGroupBox1.InternalPanel.Location = new System.Drawing.Point(0, 0);
+            this.blinkGroupBox1.InternalPanel.Name = "";
+            this.blinkGroupBox1.InternalPanel.TabIndex = 0;
+            this.blinkGroupBox1.LineBorderRadius = 3;
+            this.blinkGroupBox1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(40)))));
+            this.blinkGroupBox1.Location = new System.Drawing.Point(12, 117);
+            this.blinkGroupBox1.Name = "blinkGroupBox1";
+            this.blinkGroupBox1.Size = new System.Drawing.Size(369, 52);
+            this.blinkGroupBox1.TabIndex = 22;
+            this.blinkGroupBox1.Text = "Advanced";
+            // 
+            // blinkButton2
+            // 
+            this.blinkButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.blinkButton2.Animated = true;
+            this.blinkButton2.BackColor = System.Drawing.Color.Transparent;
+            this.blinkButton2.BorderRadius = 4;
+            this.blinkButton2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(40)))));
+            this.blinkButton2.Font = new System.Drawing.Font("Yu Gothic UI", 7F);
+            this.blinkButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.blinkButton2.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
+            this.blinkButton2.Location = new System.Drawing.Point(318, 28);
+            this.blinkButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.blinkButton2.Name = "blinkButton2";
+            this.blinkButton2.Size = new System.Drawing.Size(30, 15);
+            this.blinkButton2.TabIndex = 24;
+            this.blinkButton2.Text = "reset";
+            this.blinkButton2.Click += new System.EventHandler(this.blinkButton2_Click);
+            // 
+            // blinkLabel2
+            // 
+            this.blinkLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.blinkLabel2.AutoSize = true;
+            this.blinkLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.blinkLabel2.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
+            this.blinkLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.blinkLabel2.Location = new System.Drawing.Point(100, 189);
+            this.blinkLabel2.Name = "blinkLabel2";
+            this.blinkLabel2.Size = new System.Drawing.Size(62, 17);
+            this.blinkLabel2.TabIndex = 23;
+            this.blinkLabel2.Text = "Font name";
+            // 
+            // blinkLabel3
+            // 
+            this.blinkLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.blinkLabel3.AutoSize = true;
+            this.blinkLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.blinkLabel3.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
+            this.blinkLabel3.ForeColor = System.Drawing.Color.White;
+            this.blinkLabel3.Location = new System.Drawing.Point(17, 52);
+            this.blinkLabel3.Name = "blinkLabel3";
+            this.blinkLabel3.Size = new System.Drawing.Size(26, 17);
+            this.blinkLabel3.TabIndex = 24;
+            this.blinkLabel3.Text = "Text";
+            // 
+            // blinkLabel4
+            // 
+            this.blinkLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.blinkLabel4.AutoSize = true;
+            this.blinkLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.blinkLabel4.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
+            this.blinkLabel4.ForeColor = System.Drawing.Color.White;
+            this.blinkLabel4.Location = new System.Drawing.Point(10, 78);
+            this.blinkLabel4.Name = "blinkLabel4";
+            this.blinkLabel4.Size = new System.Drawing.Size(33, 17);
+            this.blinkLabel4.TabIndex = 25;
+            this.blinkLabel4.Text = "Color";
             // 
             // textSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(393, 108);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(30)))));
+            this.ClientSize = new System.Drawing.Size(393, 220);
+            this.Controls.Add(this.blinkLabel4);
+            this.Controls.Add(this.blinkLabel3);
+            this.Controls.Add(this.blinkLabel2);
+            this.Controls.Add(this.blinkGroupBox1);
+            this.Controls.Add(this.blinkButton1);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.Name = "textSettings";
@@ -149,21 +236,34 @@ namespace stand_banner_maker
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.textSettings_FormClosing);
             this.Move += new System.EventHandler(this.textSettings_Move);
             this.Resize += new System.EventHandler(this.textSettings_Resize);
+            this.Controls.SetChildIndex(this.textBox1, 0);
+            this.Controls.SetChildIndex(this.pictureBox2, 0);
+            this.Controls.SetChildIndex(this.blinkTitleBar1, 0);
+            this.Controls.SetChildIndex(this.blinkButton1, 0);
+            this.Controls.SetChildIndex(this.blinkGroupBox1, 0);
+            this.Controls.SetChildIndex(this.blinkLabel2, 0);
+            this.Controls.SetChildIndex(this.blinkLabel3, 0);
+            this.Controls.SetChildIndex(this.blinkLabel4, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.blinkGroupBox1.ResumeLayout(false);
+            this.blinkGroupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        public System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox textBox1;
         public System.Windows.Forms.FontDialog fontDialog1;
-        public System.Windows.Forms.Button button1;
         public System.Windows.Forms.PictureBox pictureBox2;
-        public System.Windows.Forms.Label label3;
         public System.Windows.Forms.ColorDialog colorDialog1;
-        public System.Windows.Forms.Label label4;
-        public System.Windows.Forms.CheckBox checkBox2;
+        public Blink_UI_lib.BlinkLabel blinkLabel1;
+        private Blink_UI_lib.BlinkButton blinkButton1;
+        public Blink_UI_lib.BlinkSlider verticalOffset;
+        private Blink_UI_lib.BlinkGroupBox blinkGroupBox1;
+        private Blink_UI_lib.BlinkLabel blinkLabel2;
+        private Blink_UI_lib.BlinkButton blinkButton2;
+        public Blink_UI_lib.BlinkLabel blinkLabel3;
+        public Blink_UI_lib.BlinkLabel blinkLabel4;
     }
 }

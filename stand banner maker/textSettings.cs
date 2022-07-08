@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Blink_UI_lib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,14 +11,14 @@ using System.Windows.Forms;
 
 namespace stand_banner_maker
 {
-    public partial class textSettings : Form
+    public partial class textSettings : BlinkForm
     {
         public textSettings(Form1 form)
         {
             InitializeComponent();
 
             mainForm = form;
-            label4.Text = FontString(fontDialog1.Font);
+            blinkLabel2.Text = FontString(fontDialog1.Font);
         }
 
         Form1 mainForm;
@@ -47,11 +48,7 @@ namespace stand_banner_maker
         private void button1_Click(object sender, EventArgs e)
         {
             //fontDialog1.Color = colorDialog1.Color;
-            fontDialog1.ShowDialog();
-
-            label4.Text = FontString(fontDialog1.Font);
-
-            mainForm.pictureBox1.Invalidate();
+            
         }
 
         private string FontString(Font font)
@@ -74,7 +71,8 @@ namespace stand_banner_maker
         private void pictureBox2_Paint(object sender, PaintEventArgs e)
         {
             Color b = pictureBox2.BackColor;
-            e.Graphics.DrawString("Click to set", new Font("Microsoft Sans Serif", 7f), new SolidBrush(Color.FromArgb(255 - b.R, 255 - b.G, 255 - b.B)), 2, 1);
+            e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            e.Graphics.DrawString("Set Text Color", new Font("Microsoft Sans Serif", 9f), new SolidBrush(Color.FromArgb(255 - b.R, 255 - b.G, 255 - b.B)), 3, 3);
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -84,7 +82,7 @@ namespace stand_banner_maker
 
         private void label4_SizeChanged(object sender, EventArgs e)
         {
-            checkBox2.Left = label4.Right + 10;
+            //checkBox2.Left = label4.Right + 10;
         }
 
         private void textSettings_Move(object sender, EventArgs e)
@@ -103,6 +101,36 @@ namespace stand_banner_maker
         private void textSettings_Deactivate(object sender, EventArgs e)
         {
             mainForm.ModularWindowsVisible = false;
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            verticalOffset.Value = 0;
+            mainForm.pictureBox1.Invalidate();
+        }
+
+        private void blinkButton1_Click(object sender, EventArgs e)
+        {
+            fontDialog1.ShowDialog();
+
+            blinkLabel2.Text = FontString(fontDialog1.Font);
+
+            mainForm.pictureBox1.Invalidate();
+        }
+
+        private void blinkSlider1_OnValueChanged(object sender, EventArgs args)
+        {
+            mainForm.pictureBox1.Invalidate();
+        }
+
+        private void blinkButton2_Click(object sender, EventArgs e)
+        {
+            verticalOffset.Value = 0;
         }
     }
 }
