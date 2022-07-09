@@ -16,9 +16,9 @@ using System.Windows.Forms;
 
 namespace stand_banner_maker
 {
-    public partial class Form1 : BlinkForm
+    public partial class MainForm : BlinkForm
     {
-        public Form1()
+        public MainForm()
         {
             textSettings = new textSettings(this);
             shadowSettings = new shadowSettings(this);

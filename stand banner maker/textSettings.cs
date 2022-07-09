@@ -13,7 +13,7 @@ namespace stand_banner_maker
 {
     public partial class textSettings : BlinkForm
     {
-        public textSettings(Form1 form)
+        public textSettings(MainForm form)
         {
             InitializeComponent();
 
@@ -21,7 +21,7 @@ namespace stand_banner_maker
             blinkLabel2.Text = FontString(fontDialog1.Font);
         }
 
-        Form1 mainForm;
+        MainForm mainForm;
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {

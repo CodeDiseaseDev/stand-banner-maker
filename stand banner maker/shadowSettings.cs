@@ -13,7 +13,7 @@ namespace stand_banner_maker
 {
     public partial class shadowSettings : BlinkForm
     {
-        public shadowSettings(Form1 form)
+        public shadowSettings(MainForm form)
         {
             InitializeComponent();
 
@@ -29,7 +29,7 @@ namespace stand_banner_maker
             panel1.Enabled = checkBox1.Checked;
         }
 
-        private Form1 mainForm;
+        private MainForm mainForm;
 
         private void intensity_Scroll(object sender, EventArgs e)
         {

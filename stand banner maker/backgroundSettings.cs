@@ -13,14 +13,14 @@ namespace stand_banner_maker
 {
     public partial class backgroundSettings : BlinkForm
     {
-        public backgroundSettings(Form1 form)
+        public backgroundSettings(MainForm form)
         {
             InitializeComponent();
 
             mainForm = form;
         }
 
-        private Form1 mainForm;
+        private MainForm mainForm;
 
         Bitmap downSize(Bitmap bmp)
         {

@@ -13,7 +13,7 @@ namespace stand_banner_maker
 {
     public partial class imageSettings : BlinkForm
     {
-        public imageSettings(Form1 form)
+        public imageSettings(MainForm form)
         {
             InitializeComponent();
 
@@ -23,7 +23,7 @@ namespace stand_banner_maker
             height.Value = mainForm.ResultImageSize.Height;
         }
 
-        private Form1 mainForm;
+        private MainForm mainForm;
 
         Size ResizeKeepAspect(Size src, int maxWidth, int maxHeight, bool enlarge = false)
         {

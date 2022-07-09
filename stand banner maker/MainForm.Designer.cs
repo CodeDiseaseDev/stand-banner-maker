@@ -1,7 +1,7 @@
 ﻿namespace stand_banner_maker
 {
 	// Token: 0x02000002 RID: 2
-	public partial class Form1 : Blink_UI_lib.BlinkForm
+	public partial class MainForm : Blink_UI_lib.BlinkForm
     {
 		// Token: 0x06000012 RID: 18 RVA: 0x000024E8 File Offset: 0x000006E8
 		protected override void Dispose(bool disposing)
@@ -17,7 +17,7 @@
 		// Token: 0x06000013 RID: 19 RVA: 0x00002520 File Offset: 0x00000720
 		private void InitializeComponent()
 		{
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.blinkButton2 = new Blink_UI_lib.BlinkButton();
             this.blinkButton1 = new Blink_UI_lib.BlinkButton();
