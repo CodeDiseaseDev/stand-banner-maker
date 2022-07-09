@@ -65,7 +65,7 @@ namespace stand_banner_maker
             // 
             // fontDialog1
             // 
-            this.fontDialog1.Font = new System.Drawing.Font("Calibri", 50F);
+            this.fontDialog1.Font = new System.Drawing.Font("Calibri", 80F);
             // 
             // pictureBox2
             // 
@@ -101,7 +101,7 @@ namespace stand_banner_maker
             // blinkButton1
             // 
             this.blinkButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.blinkButton1.Animated = true;
+            this.blinkButton1.Animated = false;
             this.blinkButton1.BackColor = System.Drawing.Color.Transparent;
             this.blinkButton1.BorderRadius = 4;
             this.blinkButton1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(40)))));
@@ -160,7 +160,7 @@ namespace stand_banner_maker
             // blinkButton2
             // 
             this.blinkButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.blinkButton2.Animated = true;
+            this.blinkButton2.Animated = false;
             this.blinkButton2.BackColor = System.Drawing.Color.Transparent;
             this.blinkButton2.BorderRadius = 4;
             this.blinkButton2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(40)))));

@@ -23,72 +23,36 @@ namespace stand_banner_maker
             textSettings = new textSettings(this);
             shadowSettings = new shadowSettings(this);
             backgroundSettings = new backgroundSettings(this);
+            imageSettings = new imageSettings(this);
 
             textSettings.Show();
             shadowSettings.Show();
             backgroundSettings.Show();
+            imageSettings.Show();
 
             InitializeComponent();
-
-            //EnableBlur();
-
-            //SpiralAnimation();
         }
-
-
-        
 
         public Color backgroundColor = Color.FromArgb(200, 200, 200);
         public Image background;
         public Bitmap resultImage;
+        public Size ResultImageSize = new Size(736, 247);
 
         public shadowSettings shadowSettings;
         public textSettings textSettings;
         public backgroundSettings backgroundSettings;
+        public imageSettings imageSettings;
 
         void SetLocationCentered(Point point)
         {
             Location = new Point(point.X - (Width / 2), point.Y - (Height / 2));
         }
 
-        async void SpiralAnimation()
-        {
-            int width = Screen.PrimaryScreen.Bounds.Width;
-            int height = Screen.PrimaryScreen.Bounds.Height;
-
-            PointF ArchimedeanPoint(int degrees)
-            {
-                const double a = 1;
-                const double b = 9;
-
-                double t = degrees * Math.PI / 180;
-                double r = a + b * t;
-
-                return new PointF
-                {
-                    X = (float)(width / 2 + r * Math.Cos(t)),
-                    Y = (float)(height / 2 + r * Math.Sin(t))
-                };
-            }
-
-            for (int i = 360 * 3; i > 0; i -= 20)
-            {
-                PointF p = ArchimedeanPoint(i);
-
-                SetLocationCentered(new Point((int)p.X, (int)p.Y));
-
-                await Task.Delay(10);
-            }
-        }
-
         Size MeasureText(string text, Font font)
         {
-            SizeF result;
             using (var image = new Bitmap(1, 1))
-                using (var g = Graphics.FromImage(image))
-                    result = g.MeasureString(text, font);
-
-            return result.ToSize();
+            using (var g = Graphics.FromImage(image))
+                return g.MeasureString(text, font).ToSize();
         }
 
         Bitmap RenderText(string text, Font font, Color color, Size size, int blur = 0)
@@ -135,7 +99,7 @@ namespace stand_banner_maker
                 Bitmap shadow = RenderText(
                     text, font,
                     shadowColorAlpha,
-                    pictureBox1.ClientSize,
+                    resultImage.Size,
                     shadowSettings.radius.Value
                 );
 
@@ -194,11 +158,11 @@ namespace stand_banner_maker
 
             Color color = backgroundSettings.blinkCheckbox1.Checked ? backgroundColor : Color.Transparent;
             int cornerRadius = backgroundSettings.cornerRadius.Value;
-            Rectangle rect = new Rectangle(0, 0, pictureBox1.Width - 1, pictureBox1.Height - 1);
+            Rectangle rect = new Rectangle(0, 0, resultImage.Width - 1, resultImage.Height - 1);
             var path = RoundedRect(rect, cornerRadius);
 
             graphics.FillPath(new SolidBrush(color), path);
-            graphics.DrawPath(new Pen(color), path); // draw a border around for better anti-aliasing
+            graphics.DrawPath(new Pen(color), path); // draw a border line around for better anti-aliasing
 
             if (background != null && backgroundSettings.backgroundImageEnabled.Checked)
             {
@@ -207,10 +171,10 @@ namespace stand_banner_maker
                 if (backgroundSettings.gaussianBlur.Checked)
                 {
                     var gb = new GaussianBlur(bmp);
-                    bmp = gb.Process(5);
+                    bmp = gb.Process(8);
                 }
 
-                graphics.DrawImage(bmp, 0, 0, pictureBox1.Width + 2, pictureBox1.Height);
+                graphics.DrawImage(bmp, 0, 0, resultImage.Width + 2, resultImage.Height);
             }
         }
 
@@ -221,19 +185,18 @@ namespace stand_banner_maker
 
             var size = graphics.MeasureString(text, font);
             Point textLoc = new Point(
-                (pictureBox1.ClientSize.Width / 2) - (int)(size.Width / 2),
-                (pictureBox1.ClientSize.Height / 2) - (int)(size.Height / 2)
+                (resultImage.Width / 2) - (int)(size.Width / 2),
+                (resultImage.Height / 2) - (int)(size.Height / 2)
             );
 
             Bitmap txt = RenderText(
                 text, font,
                 textSettings.colorDialog1.Color,
-                pictureBox1.ClientSize
+                resultImage.Size
             );
 
             Shadow(graphics, text, font);
 
-            //int offset = textSettings.verticalOffset.Value;
             graphics.DrawImage(txt, 0, 0);
 
             Debug(graphics, textLoc, size.ToSize());
@@ -249,13 +212,12 @@ namespace stand_banner_maker
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.Clear(BackColor);
-            //e.Graphics.DrawImage(Resources.transparent, 0, 0);
-            resultImage = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            resultImage = new Bitmap(ResultImageSize.Width, ResultImageSize.Height);
 
             using (Graphics graphics = Graphics.FromImage(resultImage))
             {
                 Render(graphics);
-                e.Graphics.DrawImage(resultImage, 0, 0);
+                e.Graphics.DrawImage(resultImage, 0, 0, pictureBox1.Width, pictureBox1.Height);
             }
         }
 
@@ -263,7 +225,6 @@ namespace stand_banner_maker
         {
             colorDialog1.ShowDialog();
             backgroundColor = colorDialog1.Color;
-            //pictureBox2.BackColor = backgroundColor;
 
             pictureBox1.Invalidate();
         }
@@ -303,8 +264,9 @@ namespace stand_banner_maker
             textSettings.WindowState = WindowState;
             shadowSettings.WindowState = WindowState;
             backgroundSettings.WindowState = WindowState;
+            imageSettings.WindowState = WindowState;
 
-            
+
 
             if (WindowState != FormWindowState.Minimized)
             {
@@ -316,6 +278,9 @@ namespace stand_banner_maker
 
                 backgroundSettings.Left = Left - backgroundSettings.Width;
                 backgroundSettings.Top = Top;
+
+                imageSettings.Left = Left - imageSettings.Width;
+                imageSettings.Top = backgroundSettings.Bottom;
             }
         }
 
@@ -332,8 +297,11 @@ namespace stand_banner_maker
             shadowSettings.Top = textSettings.Bottom;
             shadowSettings.Left = Right;
 
-            backgroundSettings.Left = Left - backgroundSettings.Width;
+            backgroundSettings.Left = Left - imageSettings.Width;
             backgroundSettings.Top = Top;
+
+            imageSettings.Left = Left - imageSettings.Width;
+            imageSettings.Top = backgroundSettings.Bottom;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -431,6 +399,21 @@ namespace stand_banner_maker
         private void blinkCheckbox1_Click(object sender, MouseEventArgs e)
         {
             pictureBox1.Invalidate();
+        }
+
+        private void blinkButton5_Click(object sender, EventArgs e)
+        {
+            if (!imageSettings.Visible)
+            {
+                imageSettings.Show();
+                imageSettings.BringToFront();
+                imageSettings.Left = Left - imageSettings.Width;
+                imageSettings.Top = backgroundSettings.Bottom;
+            }
+            else
+            {
+                imageSettings.Hide();
+            }
         }
     }
 }

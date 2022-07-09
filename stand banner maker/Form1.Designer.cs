@@ -27,14 +27,17 @@
             this.blinkGroupBox2 = new Blink_UI_lib.BlinkGroupBox();
             this.blinkButton4 = new Blink_UI_lib.BlinkButton();
             this.dbgmode = new Blink_UI_lib.BlinkCheckbox();
+            this.blinkGroupBox3 = new Blink_UI_lib.BlinkGroupBox();
+            this.blinkButton5 = new Blink_UI_lib.BlinkButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.blinkGroupBox1.SuspendLayout();
             this.blinkGroupBox2.SuspendLayout();
+            this.blinkGroupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // blinkTitleBar1
             // 
-            this.blinkTitleBar1.Size = new System.Drawing.Size(419, 29);
+            this.blinkTitleBar1.Size = new System.Drawing.Size(474, 29);
             // 
             // pictureBox1
             // 
@@ -43,7 +46,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.pictureBox1.Location = new System.Drawing.Point(12, 42);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(395, 133);
+            this.pictureBox1.Size = new System.Drawing.Size(450, 150);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
@@ -117,9 +120,9 @@
             this.blinkGroupBox1.InternalPanel.TabIndex = 0;
             this.blinkGroupBox1.LineBorderRadius = 3;
             this.blinkGroupBox1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(40)))));
-            this.blinkGroupBox1.Location = new System.Drawing.Point(12, 264);
+            this.blinkGroupBox1.Location = new System.Drawing.Point(12, 288);
             this.blinkGroupBox1.Name = "blinkGroupBox1";
-            this.blinkGroupBox1.Size = new System.Drawing.Size(395, 45);
+            this.blinkGroupBox1.Size = new System.Drawing.Size(450, 45);
             this.blinkGroupBox1.TabIndex = 10;
             this.blinkGroupBox1.Text = "Background";
             // 
@@ -142,9 +145,9 @@
             this.blinkGroupBox2.InternalPanel.TabIndex = 0;
             this.blinkGroupBox2.LineBorderRadius = 3;
             this.blinkGroupBox2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(40)))));
-            this.blinkGroupBox2.Location = new System.Drawing.Point(12, 190);
+            this.blinkGroupBox2.Location = new System.Drawing.Point(12, 214);
             this.blinkGroupBox2.Name = "blinkGroupBox2";
-            this.blinkGroupBox2.Size = new System.Drawing.Size(395, 68);
+            this.blinkGroupBox2.Size = new System.Drawing.Size(450, 68);
             this.blinkGroupBox2.TabIndex = 11;
             this.blinkGroupBox2.Text = "Foreground";
             // 
@@ -159,9 +162,9 @@
             this.blinkButton4.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F);
             this.blinkButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.blinkButton4.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
-            this.blinkButton4.Location = new System.Drawing.Point(12, 362);
+            this.blinkButton4.Location = new System.Drawing.Point(12, 468);
             this.blinkButton4.Name = "blinkButton4";
-            this.blinkButton4.Size = new System.Drawing.Size(395, 29);
+            this.blinkButton4.Size = new System.Drawing.Size(450, 29);
             this.blinkButton4.TabIndex = 12;
             this.blinkButton4.Text = "Save as PNG file";
             this.blinkButton4.Click += new System.EventHandler(this.blinkButton4_Click);
@@ -177,7 +180,7 @@
             this.dbgmode.CheckedColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(105)))));
             this.dbgmode.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
             this.dbgmode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dbgmode.Location = new System.Drawing.Point(308, 336);
+            this.dbgmode.Location = new System.Drawing.Point(363, 442);
             this.dbgmode.Name = "dbgmode";
             this.dbgmode.Size = new System.Drawing.Size(99, 20);
             this.dbgmode.TabIndex = 13;
@@ -185,12 +188,54 @@
             this.dbgmode.Click += new System.EventHandler(this.blinkCheckbox1_Click);
             this.dbgmode.MouseUp += new System.Windows.Forms.MouseEventHandler(this.blinkCheckbox1_Click);
             // 
+            // blinkGroupBox3
+            // 
+            this.blinkGroupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.blinkGroupBox3.BackColor = System.Drawing.Color.Transparent;
+            this.blinkGroupBox3.BorderRadius = 0;
+            this.blinkGroupBox3.Controls.Add(this.blinkButton5);
+            this.blinkGroupBox3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(30)))));
+            this.blinkGroupBox3.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
+            this.blinkGroupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            // 
+            // 
+            // 
+            this.blinkGroupBox3.InternalPanel.Location = new System.Drawing.Point(0, 0);
+            this.blinkGroupBox3.InternalPanel.Name = "";
+            this.blinkGroupBox3.InternalPanel.TabIndex = 0;
+            this.blinkGroupBox3.LineBorderRadius = 3;
+            this.blinkGroupBox3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(40)))));
+            this.blinkGroupBox3.Location = new System.Drawing.Point(12, 339);
+            this.blinkGroupBox3.Name = "blinkGroupBox3";
+            this.blinkGroupBox3.Size = new System.Drawing.Size(450, 45);
+            this.blinkGroupBox3.TabIndex = 14;
+            this.blinkGroupBox3.Text = "Image";
+            // 
+            // blinkButton5
+            // 
+            this.blinkButton5.Animated = false;
+            this.blinkButton5.BackColor = System.Drawing.Color.Transparent;
+            this.blinkButton5.BorderRadius = 4;
+            this.blinkButton5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(40)))));
+            this.blinkButton5.Font = new System.Drawing.Font("Yu Gothic UI", 7.5F);
+            this.blinkButton5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.blinkButton5.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
+            this.blinkButton5.Location = new System.Drawing.Point(6, 15);
+            this.blinkButton5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.blinkButton5.Name = "blinkButton5";
+            this.blinkButton5.Size = new System.Drawing.Size(122, 21);
+            this.blinkButton5.TabIndex = 12;
+            this.blinkButton5.Text = "Image Properties";
+            this.blinkButton5.Click += new System.EventHandler(this.blinkButton5_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(419, 403);
+            this.ClientSize = new System.Drawing.Size(474, 509);
+            this.Controls.Add(this.blinkGroupBox3);
             this.Controls.Add(this.dbgmode);
             this.Controls.Add(this.blinkButton4);
             this.Controls.Add(this.blinkGroupBox2);
@@ -214,9 +259,11 @@
             this.Controls.SetChildIndex(this.blinkGroupBox2, 0);
             this.Controls.SetChildIndex(this.blinkButton4, 0);
             this.Controls.SetChildIndex(this.dbgmode, 0);
+            this.Controls.SetChildIndex(this.blinkGroupBox3, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.blinkGroupBox1.ResumeLayout(false);
             this.blinkGroupBox2.ResumeLayout(false);
+            this.blinkGroupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,5 +284,7 @@
         private Blink_UI_lib.BlinkGroupBox blinkGroupBox2;
         private Blink_UI_lib.BlinkButton blinkButton4;
         private Blink_UI_lib.BlinkCheckbox dbgmode;
+        private Blink_UI_lib.BlinkGroupBox blinkGroupBox3;
+        private Blink_UI_lib.BlinkButton blinkButton5;
     }
 }

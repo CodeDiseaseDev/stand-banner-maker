@@ -52,7 +52,7 @@ namespace stand_banner_maker
             // 
             // blinkTitleBar1
             // 
-            this.blinkTitleBar1.Size = new System.Drawing.Size(310, 29);
+            this.blinkTitleBar1.Size = new System.Drawing.Size(393, 29);
             // 
             // label1
             // 
@@ -76,7 +76,7 @@ namespace stand_banner_maker
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(253, 9);
+            this.label3.Location = new System.Drawing.Point(336, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 17);
             this.label3.TabIndex = 4;
@@ -105,7 +105,7 @@ namespace stand_banner_maker
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label6.Location = new System.Drawing.Point(265, 54);
+            this.label6.Location = new System.Drawing.Point(348, 54);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(15, 17);
             this.label6.TabIndex = 7;
@@ -117,9 +117,9 @@ namespace stand_banner_maker
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.BackColor = System.Drawing.Color.Black;
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Location = new System.Drawing.Point(109, 158);
+            this.pictureBox2.Location = new System.Drawing.Point(109, 176);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(173, 20);
+            this.pictureBox2.Size = new System.Drawing.Size(256, 20);
             this.pictureBox2.TabIndex = 10;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
@@ -129,7 +129,7 @@ namespace stand_banner_maker
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 158);
+            this.label7.Location = new System.Drawing.Point(12, 176);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(91, 17);
             this.label7.TabIndex = 9;
@@ -157,7 +157,7 @@ namespace stand_banner_maker
             this.panel1.Location = new System.Drawing.Point(9, 70);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(294, 191);
+            this.panel1.Size = new System.Drawing.Size(377, 209);
             this.panel1.TabIndex = 11;
             // 
             // radius
@@ -169,7 +169,7 @@ namespace stand_banner_maker
             this.radius.MaxValue = 10;
             this.radius.MinValue = 0;
             this.radius.Name = "radius";
-            this.radius.Size = new System.Drawing.Size(274, 15);
+            this.radius.Size = new System.Drawing.Size(355, 15);
             this.radius.TabIndex = 17;
             this.radius.TrackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(60)))));
             this.radius.Value = 4;
@@ -184,7 +184,7 @@ namespace stand_banner_maker
             this.distance.MaxValue = 6;
             this.distance.MinValue = -6;
             this.distance.Name = "distance";
-            this.distance.Size = new System.Drawing.Size(274, 15);
+            this.distance.Size = new System.Drawing.Size(355, 15);
             this.distance.TabIndex = 16;
             this.distance.TrackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(60)))));
             this.distance.Value = 0;
@@ -199,7 +199,7 @@ namespace stand_banner_maker
             this.intensity.MaxValue = 255;
             this.intensity.MinValue = 0;
             this.intensity.Name = "intensity";
-            this.intensity.Size = new System.Drawing.Size(274, 15);
+            this.intensity.Size = new System.Drawing.Size(355, 15);
             this.intensity.TabIndex = 15;
             this.intensity.TrackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(60)))));
             this.intensity.Value = 150;
@@ -219,7 +219,7 @@ namespace stand_banner_maker
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label9.Location = new System.Drawing.Point(259, 100);
+            this.label9.Location = new System.Drawing.Point(342, 100);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(22, 17);
             this.label9.TabIndex = 13;
@@ -256,7 +256,7 @@ namespace stand_banner_maker
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(310, 270);
+            this.ClientSize = new System.Drawing.Size(393, 288);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.panel1);
             this.MinimumSize = new System.Drawing.Size(310, 260);
